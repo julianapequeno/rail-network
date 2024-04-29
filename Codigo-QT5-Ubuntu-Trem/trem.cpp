@@ -76,6 +76,10 @@ void Trem::run(){
     }
 }
 
+//Função que altera a velocidade
 
+void Trem::setVelocidade(int nova_vel){
+    this->velocidade = nova_vel;
+}
 
 

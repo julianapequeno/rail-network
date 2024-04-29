@@ -114,6 +114,7 @@ void MainWindow::updateInterface(int id, int x, int y){
         ui->label_trem4->setGeometry(x,y,21,17);
 
         if(y == 220 && x < 660){
+            ui->trilho10->setStyleSheet("QLabel { background: gray}");
             ui->trilho7->setStyleSheet("QLabel { background: yellow}");
         }else if(x == 660 && y <340)
             ui->trilho11->setStyleSheet("QLabel { background: yellow}");
@@ -169,3 +170,33 @@ void MainWindow::on_pushButton_2_clicked()
     trem4->terminate();
     trem5->terminate();
 }
+
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    trem1->setVelocidade(value);
+}
+
+
+void MainWindow::on_horizontalSlider_7_valueChanged(int value)
+{
+    trem2->setVelocidade(value);
+}
+
+
+void MainWindow::on_horizontalSlider_8_valueChanged(int value)
+{
+    trem3->setVelocidade(value);
+}
+
+
+void MainWindow::on_horizontalSlider_9_valueChanged(int value)
+{
+    trem4->setVelocidade(value);
+}
+
+
+void MainWindow::on_horizontalSlider_10_valueChanged(int value)
+{
+    trem5->setVelocidade(value);
+}
+

@@ -26,6 +26,16 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_horizontalSlider_valueChanged(int value);
+
+    void on_horizontalSlider_7_valueChanged(int value);
+
+    void on_horizontalSlider_8_valueChanged(int value);
+
+    void on_horizontalSlider_9_valueChanged(int value);
+
+    void on_horizontalSlider_10_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 
