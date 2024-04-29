@@ -29,23 +29,115 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+
+void MainWindow::resetTrailsColors(int id){
+    switch(id){
+    case 1:
+        ui->trilho1->setStyleSheet("QLabel { background: gray}");
+        ui->trilho4->setStyleSheet("QLabel { background: gray}");
+        ui->trilho16->setStyleSheet("QLabel { background: gray}");
+        ui->trilho3->setStyleSheet("QLabel { background: gray}");
+        break;
+    case 2:
+        ui->trilho2->setStyleSheet("QLabel { background: gray}");
+        ui->trilho4->setStyleSheet("QLabel { background: gray}");
+        ui->trilho5->setStyleSheet("QLabel { background: gray}");
+        ui->trilho17->setStyleSheet("QLabel { background: gray}");
+        break;
+    case 3:
+        ui->trilho6->setStyleSheet("QLabel { background: gray}");
+        ui->trilho10->setStyleSheet("QLabel { background: gray}");
+        ui->trilho13->setStyleSheet("QLabel { background: gray}");
+        ui->trilho9->setStyleSheet("QLabel { background: gray}");
+        break;
+    case 4:
+        ui->trilho7->setStyleSheet("QLabel { background: gray}");
+        ui->trilho11->setStyleSheet("QLabel { background: gray}");
+        ui->trilho10->setStyleSheet("QLabel { background: gray}");
+        ui->trilho14->setStyleSheet("QLabel { background: gray}");
+        break;
+    case 5:
+        ui->trilho8->setStyleSheet("QLabel { background: gray}");
+        ui->trilho12->setStyleSheet("QLabel { background: gray}");
+        ui->trilho15->setStyleSheet("QLabel { background: gray}");
+        ui->trilho11->setStyleSheet("QLabel { background: gray}");
+        break;
+    }
+}
+
 //Função que será executada quando o sinal UPDATEGUI for emitido
 void MainWindow::updateInterface(int id, int x, int y){
+    //resetTrailsColors(id);
+
     switch(id){
     case 1: //Atualiza a posição do objeto da tela (quadrado) que representa o trem1
         ui->label_trem1->setGeometry(x,y,21,17);
+        ui->trilho16->setVisible(false);
+        if (y == 100 && x <540)
+            ui->trilho1->setStyleSheet("QLabel { background: pink}");
+        else if (x == 540 && y < 220)
+            ui->trilho4->setStyleSheet("QLabel { background: pink}");
+        else if (x > 270 && y == 220){
+            ui->trilho16->setVisible(true);
+            ui->trilho16->raise();
+            ui->label_trem1->raise();
+            ui->trilho16->setStyleSheet("QLabel { background: pink}");
+        }
+        else
+            ui->trilho3->setStyleSheet("QLabel { background: pink}");
         break;
     case 2: //Atualiza a posição do objeto da tela (quadrado) que representa o trem2
         ui->label_trem2->setGeometry(x,y,21,17);
+        ui->trilho17->setVisible(false);
+        if (y == 100 && x <810)
+            ui->trilho2->setStyleSheet("QLabel { background: red}");
+        else if (x == 810 && y < 220)
+            ui->trilho5->setStyleSheet("QLabel { background: red}");
+        else if (x > 540 && y == 220){
+            ui->trilho17->setVisible(true);
+            ui->trilho17->raise();
+            ui->label_trem2->raise();
+            ui->trilho17->setStyleSheet("QLabel { background: red}");
+        }
+        else
+            ui->trilho4->setStyleSheet("QLabel { background: red}");
+
         break;
     case 3:
         ui->label_trem3->setGeometry(x,y,21,17);
+
+        if (y == 220 && x < 390)
+            ui->trilho6->setStyleSheet("QLabel { background: orange}");
+        else if(x == 390 && y < 340)
+            ui->trilho10->setStyleSheet("QLabel { background: orange}");
+        else if( x > 120 && y == 340)
+            ui->trilho13->setStyleSheet("QLabel { background: orange}");
+        else
+            ui->trilho9->setStyleSheet("QLabel { background: orange}");
         break;
     case 4:
         ui->label_trem4->setGeometry(x,y,21,17);
+
+        if(y == 220 && x < 660)
+            ui->trilho7->setStyleSheet("QLabel { background: yellow}");
+        else if(x == 660 && y <340)
+            ui->trilho11->setStyleSheet("QLabel { background: yellow}");
+        else if(x > 390 && y == 340)
+            ui->trilho14->setStyleSheet("QLabel { background: yellow}");
+        else
+            ui->trilho10->setStyleSheet("QLabel { background: yellow}");
         break;
     case 5:
         ui->label_trem5->setGeometry(x,y,21,17);
+
+        if(y == 220 && x < 930)
+            ui->trilho8->setStyleSheet("QLabel { background: green}");
+        else if(x == 930 && y < 340)
+            ui->trilho12->setStyleSheet("QLabel { background: green}");
+        else if(x > 660 && y == 340)
+            ui->trilho15->setStyleSheet("QLabel { background: green}");
+        else
+            ui->trilho11->setStyleSheet("QLabel { background: green}");
         break;
     default:
         break;

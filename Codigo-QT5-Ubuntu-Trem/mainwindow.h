@@ -19,6 +19,7 @@ public:
 
 public slots:
     void updateInterface(int,int,int);
+    void resetTrailsColors(int id);
 
 private slots:
     void on_pushButton_clicked();

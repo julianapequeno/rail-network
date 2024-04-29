@@ -23,14 +23,17 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: red}</string>
+     <string notr="true">QLabel { background: pink}</string>
     </property>
     <property name="text">
      <string>T1</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho1">
+   <widget class="QLabel" name="trilho1">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -40,13 +43,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: pink}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho2">
+   <widget class="QLabel" name="trilho16">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -62,7 +65,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho3">
+   <widget class="QLabel" name="trilho4">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -72,13 +75,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: pink}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho4">
+   <widget class="QLabel" name="trilho3">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -88,7 +91,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: pink}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
@@ -120,7 +123,7 @@
      <string>Parar</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho4_2">
+   <widget class="QLabel" name="trilho5">
     <property name="geometry">
      <rect>
       <x>810</x>
@@ -136,7 +139,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho1_2">
+   <widget class="QLabel" name="trilho2">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -152,7 +155,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho2_2">
+   <widget class="QLabel" name="trilho17">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -184,7 +187,7 @@
      <string>T2</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho2_3">
+   <widget class="QLabel" name="trilho13">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -194,7 +197,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: orange}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
@@ -216,7 +219,7 @@
      <string>T1</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho1_3">
+   <widget class="QLabel" name="trilho7">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -226,13 +229,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: yellow}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho1_4">
+   <widget class="QLabel" name="trilho6">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -242,13 +245,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: orange}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho3_2">
+   <widget class="QLabel" name="trilho10">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -258,13 +261,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: orange}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho4_3">
+   <widget class="QLabel" name="trilho9">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -274,7 +277,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: orange}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
@@ -290,13 +293,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: red}</string>
+     <string notr="true">QLabel { background: yellow}</string>
     </property>
     <property name="text">
      <string>T4</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho2_4">
+   <widget class="QLabel" name="trilho14">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -306,13 +309,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: yellow}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho4_4">
+   <widget class="QLabel" name="trilho11">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -322,13 +325,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: green}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho4_5">
+   <widget class="QLabel" name="trilho12">
     <property name="geometry">
      <rect>
       <x>930</x>
@@ -338,13 +341,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: green}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho2_5">
+   <widget class="QLabel" name="trilho15">
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -354,7 +357,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: green}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
@@ -370,7 +373,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: red}</string>
+     <string notr="true">QLabel { background: orange}</string>
     </property>
     <property name="text">
      <string>T3</string>
@@ -386,13 +389,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: red}</string>
+     <string notr="true">QLabel { background: green}</string>
     </property>
     <property name="text">
      <string>T5</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_trilho2_6">
+   <widget class="QLabel" name="trilho8">
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -402,7 +405,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel { background: green}</string>
+     <string notr="true">QLabel { background: gray}</string>
     </property>
     <property name="text">
      <string/>
@@ -429,26 +432,26 @@
      <bool>false</bool>
     </property>
    </widget>
-   <zorder>label_trilho1</zorder>
-   <zorder>label_trilho2</zorder>
-   <zorder>label_trilho3</zorder>
-   <zorder>label_trilho4</zorder>
+   <zorder>trilho1</zorder>
+   <zorder>trilho16</zorder>
+   <zorder>trilho4</zorder>
+   <zorder>trilho3</zorder>
    <zorder>pushButton</zorder>
    <zorder>pushButton_2</zorder>
-   <zorder>label_trilho4_2</zorder>
-   <zorder>label_trilho1_2</zorder>
-   <zorder>label_trilho2_2</zorder>
-   <zorder>label_trilho2_3</zorder>
+   <zorder>trilho5</zorder>
+   <zorder>trilho2</zorder>
+   <zorder>trilho17</zorder>
+   <zorder>trilho13</zorder>
    <zorder>label_trem1_2</zorder>
-   <zorder>label_trilho1_3</zorder>
-   <zorder>label_trilho1_4</zorder>
-   <zorder>label_trilho3_2</zorder>
-   <zorder>label_trilho4_3</zorder>
-   <zorder>label_trilho2_4</zorder>
-   <zorder>label_trilho4_4</zorder>
-   <zorder>label_trilho4_5</zorder>
-   <zorder>label_trilho2_5</zorder>
-   <zorder>label_trilho2_6</zorder>
+   <zorder>trilho7</zorder>
+   <zorder>trilho6</zorder>
+   <zorder>trilho10</zorder>
+   <zorder>trilho9</zorder>
+   <zorder>trilho14</zorder>
+   <zorder>trilho11</zorder>
+   <zorder>trilho12</zorder>
+   <zorder>trilho15</zorder>
+   <zorder>trilho8</zorder>
    <zorder>label</zorder>
    <zorder>label_trem2</zorder>
    <zorder>label_trem1</zorder>
