@@ -433,28 +433,28 @@
    <zorder>label_trilho2</zorder>
    <zorder>label_trilho3</zorder>
    <zorder>label_trilho4</zorder>
-   <zorder>label_trem1</zorder>
    <zorder>pushButton</zorder>
    <zorder>pushButton_2</zorder>
    <zorder>label_trilho4_2</zorder>
    <zorder>label_trilho1_2</zorder>
    <zorder>label_trilho2_2</zorder>
-   <zorder>label_trem2</zorder>
    <zorder>label_trilho2_3</zorder>
    <zorder>label_trem1_2</zorder>
    <zorder>label_trilho1_3</zorder>
    <zorder>label_trilho1_4</zorder>
    <zorder>label_trilho3_2</zorder>
    <zorder>label_trilho4_3</zorder>
-   <zorder>label_trem2_2</zorder>
    <zorder>label_trilho2_4</zorder>
    <zorder>label_trilho4_4</zorder>
    <zorder>label_trilho4_5</zorder>
    <zorder>label_trilho2_5</zorder>
-   <zorder>label_trem2_3</zorder>
-   <zorder>label_trem2_4</zorder>
    <zorder>label_trilho2_6</zorder>
    <zorder>label</zorder>
+   <zorder>label_trem2</zorder>
+   <zorder>label_trem1</zorder>
+   <zorder>label_trem2_3</zorder>
+   <zorder>label_trem2_2</zorder>
+   <zorder>label_trem2_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

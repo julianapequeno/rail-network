@@ -14,22 +14,22 @@ void Trem::run(){
     while(true){
         switch(ID){
         case 1:     //Trem 1
-            if (y == 30 && x <330)
+            if (y == 100 && x <540)
                 x+=10;
-            else if (x == 330 && y < 150)
+            else if (x == 540 && y < 220)
                 y+=10;
-            else if (x > 60 && y == 150)
+            else if (x > 270 && y == 220)
                 x-=10;
             else
                 y-=10;
             emit updateGUI(ID, x,y);    //Emite um sinal - mudou de posição
             break;
         case 2: //Trem 2
-            if (y == 30 && x <600)
+            if (y == 100 && x <810)
                 x+=10;
-            else if (x == 600 && y < 150)
+            else if (x == 810 && y < 220)
                 y+=10;
-            else if (x > 330 && y == 150)
+            else if (x > 540 && y == 220)
                 x-=10;
             else
                 y-=10;
