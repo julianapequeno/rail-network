@@ -58,6 +58,6 @@ void MainWindow::on_pushButton_clicked()
  */
 void MainWindow::on_pushButton_2_clicked()
 {
-    trem1->terminate();
+    trem1->terminate(); //finaliza a thread que está sendo executada
     trem2->terminate();
 }

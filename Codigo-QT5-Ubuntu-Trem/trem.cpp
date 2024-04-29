@@ -6,7 +6,7 @@ Trem::Trem(int ID, int x, int y){
     this->ID = ID;
     this->x = x;
     this->y = y;
-    velocidade = 100;
+    velocidade = 100; //velocidade padrão
 }
 
 //Função a ser executada após executar trem->START
@@ -22,7 +22,7 @@ void Trem::run(){
                 x-=10;
             else
                 y-=10;
-            emit updateGUI(ID, x,y);    //Emite um sinal
+            emit updateGUI(ID, x,y);    //Emite um sinal - mudou de posição
             break;
         case 2: //Trem 2
             if (y == 30 && x <600)
@@ -39,6 +39,7 @@ void Trem::run(){
             break;
         }
         msleep(velocidade);
+        // Quão mais alto a velocidade, mais devagar o trem anda
     }
 }
 
