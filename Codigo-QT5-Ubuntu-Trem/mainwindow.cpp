@@ -21,11 +21,11 @@ MainWindow::MainWindow(QWidget *parent) :
      * Trem1 e Trem2 são os objetos que podem chamar o sinal. Se um outro objeto chamar o
      * sinal UPDATEGUI, não haverá execução da função UPDATEINTERFACE
      */
-    connect(trem1,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
-    connect(trem2,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
-    connect(trem3,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
-    connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
-    connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
+    connect(trem1,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
+    connect(trem2,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
+    connect(trem3,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
+    connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
+    connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
 
 }
 
@@ -60,6 +60,30 @@ void MainWindow::resetTrailsColors(int id){
 }
 
 //Função que será executada quando o sinal UPDATEGUI for emitido
+void MainWindow::updateInterfaceTrainsPositions(int id, int x, int y){
+    switch(id){
+    case 1: //Atualiza a posição do objeto da tela (quadrado) que representa o trem1
+        ui->label_trem1->setGeometry(x,y,21,17);
+        break;
+    case 2: //Atualiza a posição do objeto da tela (quadrado) que representa o trem2
+        ui->label_trem2->setGeometry(x,y,21,17);
+        break;
+    case 3:
+        ui->label_trem3->setGeometry(x,y,21,17);
+        break;
+    case 4:
+        ui->label_trem4->setGeometry(x,y,21,17);
+        break;
+    case 5:
+        ui->label_trem5->setGeometry(x,y,21,17);
+        break;
+    default:
+        break;
+    }
+}
+
+//Segunda opção da função que será executada quando o sinal UPDATEGUI for emitido
+//Com cores nos trilhos
 void MainWindow::updateInterface(int id, int x, int y){
     resetTrailsColors(id);
     switch(id){
