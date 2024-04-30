@@ -197,30 +197,63 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
+    if(value == 200){
+        trem1->terminate();
+        return;
+    }
+    if(!trem1->isRunning())
+        trem1->start();
+
     trem1->setVelocidade(value);
 }
 
 
 void MainWindow::on_horizontalSlider_7_valueChanged(int value)
 {
+    if(value == 200){
+        trem2->terminate();
+        return;
+    }
+    if(!trem2->isRunning())
+        trem2->start();
+
     trem2->setVelocidade(value);
 }
 
 
 void MainWindow::on_horizontalSlider_8_valueChanged(int value)
 {
+    if(value == 200){
+        trem3->terminate();
+        return;
+    }
+    if(!trem3->isRunning())
+        trem3->start();
+
     trem3->setVelocidade(value);
 }
 
 
 void MainWindow::on_horizontalSlider_9_valueChanged(int value)
 {
+    if(value == 200){
+        trem4->terminate();
+        return;
+    }
+    if(!trem4->isRunning())
+        trem4->start();
     trem4->setVelocidade(value);
 }
 
 
 void MainWindow::on_horizontalSlider_10_valueChanged(int value)
 {
+    if(value == 200){
+        trem5->terminate();
+        return;
+    }
+    if(!trem5->isRunning())
+        trem5->start();
     trem5->setVelocidade(value);
 }
 
