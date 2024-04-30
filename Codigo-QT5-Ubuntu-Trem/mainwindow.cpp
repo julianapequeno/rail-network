@@ -27,6 +27,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
     connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
 
+    /*Threads iniciam automaticamente*/
+    trem1->start();
+    trem2->start();
+    trem3->start();
+    trem4->start();
+    trem5->start();
 }
 
 
@@ -207,7 +213,6 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
     trem1->setVelocidade(value);
 }
 
-
 void MainWindow::on_horizontalSlider_7_valueChanged(int value)
 {
     if(value == 200){
@@ -219,7 +224,6 @@ void MainWindow::on_horizontalSlider_7_valueChanged(int value)
 
     trem2->setVelocidade(value);
 }
-
 
 void MainWindow::on_horizontalSlider_8_valueChanged(int value)
 {
@@ -233,7 +237,6 @@ void MainWindow::on_horizontalSlider_8_valueChanged(int value)
     trem3->setVelocidade(value);
 }
 
-
 void MainWindow::on_horizontalSlider_9_valueChanged(int value)
 {
     if(value == 200){
@@ -244,7 +247,6 @@ void MainWindow::on_horizontalSlider_9_valueChanged(int value)
         trem4->start();
     trem4->setVelocidade(value);
 }
-
 
 void MainWindow::on_horizontalSlider_10_valueChanged(int value)
 {
