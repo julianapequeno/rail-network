@@ -1,5 +1,4 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "semaforo.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -7,12 +6,21 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    /*Criação de Semáforos*/
+    s0 = new Semaforo('0');
+    s1 = new Semaforo('1');
+    s2 = new Semaforo('2');
+    s3 = new Semaforo('3');
+    s4 = new Semaforo('4');
+    s5 = new Semaforo('5');
+    s6 = new Semaforo('6');
+
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1,270,100);
-    trem2 = new Trem(2,540,100);
-    trem3 = new Trem(3,120,220);
-    trem4 = new Trem(4,390,220);
-    trem5 = new Trem(5,660,220);
+    trem1 = new Trem(1,270,100,semaforos);
+    trem2 = new Trem(2,540,100,semaforos);
+    trem3 = new Trem(3,120,220,semaforos);
+    trem4 = new Trem(4,390,220,semaforos);
+    trem5 = new Trem(5,660,220, semaforos);
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.

@@ -1,11 +1,12 @@
 #include "trem.h"
-#include <QtCore>
+#include "semaforo.h"
 
 //Construtor
-Trem::Trem(int ID, int x, int y){
+Trem::Trem(int ID, int x, int y,std::vector<Semaforo**> semaforos){
     this->ID = ID;
     this->x = x;
     this->y = y;
+    this->semaforos = semaforos;
     velocidade = 100; //velocidade padrão
 }
 
@@ -16,11 +17,18 @@ void Trem::run(){
         case 1:     //Trem 1
             if (y == 100 && x <540)
                 x+=10;
-            else if (x == 540 && y < 220)
+            else if (x == 540 && y < 220){
+               // this->semaforos.at(0).checkIfIsAvaiable(&this);
+                (**this->semaforos[0]).checkIfIsAvaiable(&this);
                 y+=10;
-            else if (x > 270 && y == 220)
+            }else if (x > 270 && y == 220){
+                if(x < 390){
+                 //   this->semaforos.at(1).checkIfIsAvaiable(&this);
+                }else{
+              //      this->semaforos.at(2).checkIfIsAvaiable(&this);
+                }
                 x-=10;
-            else
+            }else
                 y-=10;
             emit updateGUI(ID, x,y);    //Emite um sinal - mudou de posição
             break;
@@ -29,10 +37,17 @@ void Trem::run(){
                 x+=10;
             else if (x == 810 && y < 220)
                 y+=10;
-            else if (x > 540 && y == 220)
+            else if (x > 540 && y == 220){
+                if (x > 660){
+                 //   this->semaforos.at(4).checkIfIsAvaiable(&this);
+                }else{
+                   // this->semaforos.at(3).checkIfIsAvaiable(&this);
+                }
                 x-=10;
-            else
+            }else{
+               // this->semaforos.at(0).checkIfIsAvaiable(&this);
                 y-=10;
+            }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
         case 3: //Trem 3
@@ -77,9 +92,14 @@ void Trem::run(){
 }
 
 //Função que altera a velocidade
-
 void Trem::setVelocidade(int nova_vel){
     this->velocidade = nova_vel;
 }
 
+int Trem::getX(){
+    return this->x;
+}
 
+int Trem::getY(){
+    return this->y;
+}

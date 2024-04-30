@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include "trem.h"
+#include "semaforo.h"
+#include <vector>
+#include <semaphore.h>
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -46,6 +51,17 @@ private:
     Trem *trem3;
     Trem *trem4;
     Trem *trem5;
+
+    //Cria os objetos SEMÁFOROS
+    Semaforo *s0;
+    Semaforo *s1;
+    Semaforo *s2;
+    Semaforo *s3;
+    Semaforo *s4;
+    Semaforo *s5;
+    Semaforo *s6;
+
+    std::vector<Semaforo**> semaforos = {&s0,&s1,&s2,&s3,&s4,&s5,&s6};
 };
 
 #endif // MAINWINDOW_H
