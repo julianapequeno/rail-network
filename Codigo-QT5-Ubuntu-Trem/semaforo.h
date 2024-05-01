@@ -8,8 +8,8 @@ public:
     Semaforo(char label);
     void destroySemaforo();
     bool verificaRegiaoCritica(int x, int y);
-    void ocupar();
-    void liberar();
+    void ocupar(char trem);
+    void liberar(char trem);
     int *buffer;
 private:
     sem_t s;//o semáforo

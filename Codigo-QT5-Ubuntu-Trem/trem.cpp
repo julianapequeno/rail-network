@@ -1,6 +1,6 @@
 #include "trem.h"
 #include <QtCore>
-
+#include <iostream>
 //Construtor
 Trem::Trem(int ID, int x, int y,std::vector<Semaforo**> semaforos){
     this->ID = ID;
@@ -98,54 +98,64 @@ void Trem::run(){
     while(true){
         switch(ID){
         case 1:     //Trem 1
-            if (y == 100 && x <540)
+            if (y == 100 && x <540){
                 x+=10;
-            else if (x == 540 && y < 220){//entrou no S0
-                (**this->semaforos[0]).ocupar();
+            }else if (x == 540 && y < 220){//entrou no S0
+                if(x==530 && y==100){ //assim que está para entrar ele ocupa S0
+                    (**this->semaforos[0]).ocupar('1');
+                    break;
+                }
                 y+=10;
             }else if (x > 270 && y == 220){
-                if(x < 390){ //Saiu do S1 e entrou no S2
-                    if(x==380 && y==220){
-                        (**this->semaforos[1]).liberar();
-                        (**this->semaforos[2]).ocupar();
-                    }
-                 //   this->semaforos.at(1).checkIfIsAvaiable(&this);
-                }else{ //saiu do S0 e entrou no S1
-                    if(x==520 && y==220){
-                        (**this->semaforos[0]).liberar();
-                        (**this->semaforos[1]).ocupar();
-                    }
-              //      this->semaforos.at(2).checkIfIsAvaiable(&this);
-                }
                 x-=10;
+                if(x < 390){ //Saiu do S1 e entrou no S2
+                    (**this->semaforos[1]).liberar('1');
+                    if(x==380 && y==220){
+                        (**this->semaforos[2]).ocupar('1');
+                        break;
+                    }
+                }else{ //saiu do S0 e entrou no S1
+                    (**this->semaforos[0]).liberar('1');
+                    if(x==530 && y==220){
+                        (**this->semaforos[1]).ocupar('1');
+                        break;
+                    }
+                }
             }else{
-                (**this->semaforos[2]).liberar();
+                (**this->semaforos[2]).liberar('1');
                 y-=10;
             }
             emit updateGUI(ID, x,y);    //Emite um sinal - mudou de posição
             break;
         case 2: //Trem 2
             if (y == 100 && x <810){
-                (**this->semaforos[0]).liberar();
+                if(x==550 && y==100){
+                    (**this->semaforos[0]).liberar('2');
+                }
                 x+=10;
             }else if (x == 810 && y < 220)
                 y+=10;
             else if (x > 540 && y == 220){
                 if (x > 660){
-                    (**this->semaforos[3]).ocupar();
-                   // (**this->semaforos[4]).liberar();
-                 //   this->semaforos.at(4).checkIfIsAvaiable(&this);
+                    if(x==800 && y==100){
+                        (**this->semaforos[3]).ocupar('2');
+                        break;
+                    }
                 }else{
-                    (**this->semaforos[3]).liberar();
-                    (**this->semaforos[4]).ocupar();
-                   // (**this->semaforos[4]).liberar();
-                   // this->semaforos.at(3).checkIfIsAvaiable(&this);
+                    (**this->semaforos[3]).liberar('2');
+                    if(x==650 && y==220){
+                        (**this->semaforos[4]).ocupar('2');
+                        break;
+                    }
                 }
                 x-=10;
             }else{
-                (**this->semaforos[4]).liberar();
-                (**this->semaforos[0]).ocupar();
                 y-=10;
+                (**this->semaforos[4]).liberar('2');
+                if(y==220 && x==540){
+                    (**this->semaforos[0]).ocupar('2');
+                    break;
+                }
             }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;

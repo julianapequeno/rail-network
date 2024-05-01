@@ -38,13 +38,13 @@ void Semaforo::destroySemaforo(){
 }
 
 
-void Semaforo::ocupar(){
-    std::cout << "Ocupando " << this->label << std::endl;
+void Semaforo::ocupar(char trem){
+    std::cout << trem << " trem ocupando " << this->label << std::endl;
     sem_wait(&this->s);
 }
 
-void Semaforo::liberar(){
-    std::cout << "Liberando " << this->label << std::endl;
+void Semaforo::liberar(char trem){
+    std::cout << trem << " trem liberando " << this->label << std::endl;
     sem_post(&this->s);
 }
 
