@@ -19,6 +19,8 @@ public:
     void setVelocidade(int); //função que altera a velocidade
     int getX();
     int getY();
+    int getID();
+    int isInTrail(int x, int y, Trem *trem);
 
 //Cria um sinal
 signals:

@@ -1,9 +1,11 @@
 #include "semaforo.h"
 #include <semaphore.h>
-
+#include <iostream>
 Semaforo::Semaforo(char label) {
     this->label =  label;
-    sem_init(&this->s, 0, 1);
+    int buf = 0;
+    this->buffer = &buf;
+    sem_init(&this->s, buf, 1);
 }
 
 bool Semaforo::verificaRegiaoCritica(int x, int y){
@@ -36,19 +38,15 @@ void Semaforo::destroySemaforo(){
 }
 
 
-void Semaforo::checkIfIsAvaiable(int x, int y){
-    switch(this->label){
-    case '0':
-        if (x == 540 && y < 220){
-            sem_wait(&this->s);
-        }
-        break;
-    case '1':
-        if ((x > 270 && x <390) && y == 220){
-            sem_wait(&this->s);
-        }
-        break;
+void Semaforo::ocupar(){
+    if(this->buffer == 0){
+        sem_wait(&this->s);
+    }else{
+        sem_post(&this->s);
     }
+}
+
+void Semaforo::liberar(){
     sem_post(&this->s);
 }
 
