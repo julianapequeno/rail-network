@@ -3,9 +3,9 @@
 #include <iostream>
 Semaforo::Semaforo(char label) {
     this->label =  label;
-    int buf = 0;
-    this->buffer = &buf;
-    sem_init(&this->s, buf, 1);
+    //int buf = 1;
+    //this->buffer = &buf;
+    sem_init(&this->s, 0, 1);
 }
 
 bool Semaforo::verificaRegiaoCritica(int x, int y){
@@ -39,14 +39,12 @@ void Semaforo::destroySemaforo(){
 
 
 void Semaforo::ocupar(){
-    if(this->buffer == 0){
-        sem_wait(&this->s);
-    }else{
-        sem_post(&this->s);
-    }
+    std::cout << "Ocupando " << this->label << std::endl;
+    sem_wait(&this->s);
 }
 
 void Semaforo::liberar(){
+    std::cout << "Liberando " << this->label << std::endl;
     sem_post(&this->s);
 }
 

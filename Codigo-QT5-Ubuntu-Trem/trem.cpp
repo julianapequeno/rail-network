@@ -100,35 +100,50 @@ void Trem::run(){
         case 1:     //Trem 1
             if (y == 100 && x <540)
                 x+=10;
-            else if (x == 540 && y < 220){
-                /*AQUI ENTRA A LÓGICA DE QUANDO OCUPAR/DESOCUPAR*/
+            else if (x == 540 && y < 220){//entrou no S0
                 (**this->semaforos[0]).ocupar();
                 y+=10;
             }else if (x > 270 && y == 220){
-                (**this->semaforos[0]).liberar();
-                if(x < 390){
+                if(x < 390){ //Saiu do S1 e entrou no S2
+                    if(x==380 && y==220){
+                        (**this->semaforos[1]).liberar();
+                        (**this->semaforos[2]).ocupar();
+                    }
                  //   this->semaforos.at(1).checkIfIsAvaiable(&this);
-                }else{
+                }else{ //saiu do S0 e entrou no S1
+                    if(x==520 && y==220){
+                        (**this->semaforos[0]).liberar();
+                        (**this->semaforos[1]).ocupar();
+                    }
               //      this->semaforos.at(2).checkIfIsAvaiable(&this);
                 }
                 x-=10;
-            }else
+            }else{
+                (**this->semaforos[2]).liberar();
                 y-=10;
+            }
             emit updateGUI(ID, x,y);    //Emite um sinal - mudou de posição
             break;
         case 2: //Trem 2
-            if (y == 100 && x <810)
+            if (y == 100 && x <810){
+                (**this->semaforos[0]).liberar();
                 x+=10;
-            else if (x == 810 && y < 220)
+            }else if (x == 810 && y < 220)
                 y+=10;
             else if (x > 540 && y == 220){
                 if (x > 660){
+                    (**this->semaforos[3]).ocupar();
+                   // (**this->semaforos[4]).liberar();
                  //   this->semaforos.at(4).checkIfIsAvaiable(&this);
                 }else{
+                    (**this->semaforos[3]).liberar();
+                    (**this->semaforos[4]).ocupar();
+                   // (**this->semaforos[4]).liberar();
                    // this->semaforos.at(3).checkIfIsAvaiable(&this);
                 }
                 x-=10;
             }else{
+                (**this->semaforos[4]).liberar();
                 (**this->semaforos[0]).ocupar();
                 y-=10;
             }
