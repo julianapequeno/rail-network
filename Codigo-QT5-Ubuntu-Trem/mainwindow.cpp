@@ -1,18 +1,28 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    /*Criação de Semáforos*/
+    s0 = new Semaforo('0');
+    s1 = new Semaforo('1');
+    s2 = new Semaforo('2');
+    s3 = new Semaforo('3');
+    s4 = new Semaforo('4');
+    s5 = new Semaforo('5');
+    s6 = new Semaforo('6');
+
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1,270,100);
-    trem2 = new Trem(2,540,100);
-    trem3 = new Trem(3,120,220);
-    trem4 = new Trem(4,390,220);
-    trem5 = new Trem(5,660,220);
+    trem1 = new Trem(1,270,100,semaforos);
+    trem2 = new Trem(2,540,100,semaforos);
+    trem3 = new Trem(3,120,220,semaforos);
+    trem4 = new Trem(4,390,220,semaforos);
+    trem5 = new Trem(5,660,220, semaforos);
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -27,6 +37,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
     connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterfaceTrainsPositions(int,int,int)));
 
+    /*Threads iniciam automaticamente*/
+    trem1->start();
+    trem2->start();
+    trem3->start();
+    trem4->start();
+    trem5->start();
 }
 
 
@@ -207,7 +223,6 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
     trem1->setVelocidade(value);
 }
 
-
 void MainWindow::on_horizontalSlider_7_valueChanged(int value)
 {
     if(value == 200){
@@ -219,7 +234,6 @@ void MainWindow::on_horizontalSlider_7_valueChanged(int value)
 
     trem2->setVelocidade(value);
 }
-
 
 void MainWindow::on_horizontalSlider_8_valueChanged(int value)
 {
@@ -233,7 +247,6 @@ void MainWindow::on_horizontalSlider_8_valueChanged(int value)
     trem3->setVelocidade(value);
 }
 
-
 void MainWindow::on_horizontalSlider_9_valueChanged(int value)
 {
     if(value == 200){
@@ -244,7 +257,6 @@ void MainWindow::on_horizontalSlider_9_valueChanged(int value)
         trem4->start();
     trem4->setVelocidade(value);
 }
-
 
 void MainWindow::on_horizontalSlider_10_valueChanged(int value)
 {
