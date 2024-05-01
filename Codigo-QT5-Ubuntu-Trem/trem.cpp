@@ -103,24 +103,21 @@ void Trem::run(){
             }else if (x == 540 && y < 220){//entrou no S0
                 if(x==530 && y==100){ //assim que está para entrar ele ocupa S0
                     (**this->semaforos[0]).ocupar('1');
-                    break;
                 }
                 y+=10;
             }else if (x > 270 && y == 220){
-                x-=10;
                 if(x < 390){ //Saiu do S1 e entrou no S2
                     (**this->semaforos[1]).liberar('1');
                     if(x==380 && y==220){
                         (**this->semaforos[2]).ocupar('1');
-                        break;
                     }
                 }else{ //saiu do S0 e entrou no S1
                     (**this->semaforos[0]).liberar('1');
                     if(x==530 && y==220){
                         (**this->semaforos[1]).ocupar('1');
-                        break;
                     }
                 }
+                x-=10;
             }else{
                 (**this->semaforos[2]).liberar('1');
                 y-=10;
@@ -139,23 +136,20 @@ void Trem::run(){
                 if (x > 660){
                     if(x==800 && y==100){
                         (**this->semaforos[3]).ocupar('2');
-                        break;
                     }
                 }else{
                     (**this->semaforos[3]).liberar('2');
                     if(x==650 && y==220){
                         (**this->semaforos[4]).ocupar('2');
-                        break;
                     }
                 }
                 x-=10;
             }else{
-                y-=10;
                 (**this->semaforos[4]).liberar('2');
                 if(y==220 && x==540){
                     (**this->semaforos[0]).ocupar('2');
-                    break;
                 }
+                 y-=10;
             }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
