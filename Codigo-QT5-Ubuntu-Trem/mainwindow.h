@@ -5,9 +5,6 @@
 #include "trem.h"
 #include "semaforo.h"
 #include <vector>
-#include <semaphore.h>
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
 
 namespace Ui {
 class MainWindow;

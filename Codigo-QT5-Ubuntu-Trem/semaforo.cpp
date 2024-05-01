@@ -1,4 +1,5 @@
 #include "semaforo.h"
+#include <semaphore.h>
 
 Semaforo::Semaforo(char label) {
     this->label =  label;
@@ -35,15 +36,15 @@ void Semaforo::destroySemaforo(){
 }
 
 
-void Semaforo::checkIfIsAvaiable(Trem *trem){
+void Semaforo::checkIfIsAvaiable(int x, int y){
     switch(this->label){
     case '0':
-        if (trem->getX()  == 540 && trem->getY() < 220){
+        if (x == 540 && y < 220){
             sem_wait(&this->s);
         }
         break;
     case '1':
-        if ((trem->getX()  > 270 && trem->getX()  <390) && trem->getY() == 220){
+        if ((x > 270 && x <390) && y == 220){
             sem_wait(&this->s);
         }
         break;

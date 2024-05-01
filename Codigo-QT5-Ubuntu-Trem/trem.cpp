@@ -1,5 +1,5 @@
 #include "trem.h"
-#include "semaforo.h"
+#include <QtCore>
 
 //Construtor
 Trem::Trem(int ID, int x, int y,std::vector<Semaforo**> semaforos){
@@ -19,7 +19,7 @@ void Trem::run(){
                 x+=10;
             else if (x == 540 && y < 220){
                // this->semaforos.at(0).checkIfIsAvaiable(&this);
-                (**this->semaforos[0]).checkIfIsAvaiable(&this);
+                (**this->semaforos[0]).checkIfIsAvaiable(x,y);
                 y+=10;
             }else if (x > 270 && y == 220){
                 if(x < 390){
