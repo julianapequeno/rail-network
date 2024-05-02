@@ -99,40 +99,41 @@ void Trem::run(){
         switch(ID){
         case 1:     //Trem 1
             if (y == 100 && x <540){
-                if(x==520 && y==100){ //assim que está para entrar ele ocupa S0
+                if(x==520 && y==100){ //!CONFERE ENTRADA EM S0
                     this->mutex.lock();
                     (**this->semaforos[0]).ocupar('1');
                     this->mutex.unlock();
                 }
                 x+=10;
-            }else if (x == 540 && y < 220){//entrou no S0
-                //deprecated (**this->semaforos[0]).ocupar('1');
+            }else if (x == 540 && y < 220){//!EM S0
+                if(x==540 && y==200){ //!No final de S0, ocupando S1
+                    this->mutex.lock();
+                    (**this->semaforos[1]).ocupar('1');
+                    this->mutex.unlock();
+                }
                 y+=10;
             }else if (x > 270 && y == 220){
-                if(x < 390){ //Saiu do S1 e entrou no S2
-                   // if(x==380 && y==220){
-                     //   this->mutex.lock();
-                       // (**this->semaforos[1]).liberar('1');
-                        //(**this->semaforos[2]).ocupar('1');
-                        //this->mutex.unlock();
-                   // }
-                }else{ //saiu do S0 e entrou no S1
-                    if(x==530 && y==220){ //! Liberando S0 e Ocupando S1
+                if(!(x < 390)){ //!Saiu do S0 e entrou no S1; entre [S1,S2]
+                    if(x==530 && y==220){ //!Em S1, liberando S0
                         this->mutex.lock();
                         (**this->semaforos[0]).liberar('1');
-                        (**this->semaforos[1]).ocupar('1');
                         this->mutex.unlock();
                     }
-                    if(x==420 && y==220){ //! Liberando S1 e Ocupando S2
+                    if(x==420 && y==220){ //! No final de S1, ocupando S2
+                        this->mutex.lock();
+                        (**this->semaforos[2]).ocupar('1');
+                        this->mutex.unlock();
+                    }
+                }else{ //! Saiu de S1 e entrou em S2; entre [S2;-]
+                    if(x==370 && y==220){ //! Em S2, liberando S1
                         this->mutex.lock();
                         (**this->semaforos[1]).liberar('1');
-                        (**this->semaforos[2]).ocupar('1');
                         this->mutex.unlock();
                     }
                 }
                 x-=10;
             }else{
-                if(x==270 && y==220){
+                if(x==270 && y==220){ //!Libera S2
                     this->mutex.lock();
                     (**this->semaforos[2]).liberar('1');
                     this->mutex.unlock();
@@ -145,38 +146,41 @@ void Trem::run(){
             if (y == 100 && x <810){
                 x+=10;
             }else if (x == 810 && y < 220){
+                if(x==810 && y==200){ //! CONFERE ENTRADA EM S3
+                    this->mutex.lock();
+                    (**this->semaforos[3]).ocupar('2');
+                    this->mutex.unlock();
+                }
                 y+=10;
             }else if (x > 540 && y == 220){
-                if (x > 660){
-                    if(x==800 && y==220){
-                        this->mutex.lock();
-                        (**this->semaforos[3]).ocupar('2');
-                        this->mutex.unlock();
-                    }
-
-                    if(x==680 && y==220){ //!CONFERE ENTRADA EM S4
+                if (x > 660){ //!Em S3
+                    if(x==790 && y==220){ //!LIBERA S3
                         this->mutex.lock();
                         (**this->semaforos[3]).liberar('2');
+                        this->mutex.unlock();
+                    }
+                    if(x==680 && y==220){ //!CONFERE ENTRADA EM S4
+                        this->mutex.lock();
                         (**this->semaforos[4]).ocupar('2');
                         this->mutex.unlock();
                     }
                 }else{
                     //!ÁREA DE S4
-                }
-                if(y==220 && x==560){ // trem2 espera dois blocos antes
-                    this->mutex.lock();
-                    (**this->semaforos[0]).ocupar('2');
-                    this->mutex.unlock();
+                    if(y==220 && x==560){ //!CONFERE ENTRADA EM S0
+                        this->mutex.lock();
+                        (**this->semaforos[0]).ocupar('2');
+                        this->mutex.unlock();
+                    }
                 }
                 x-=10;
             }else{
                 y-=10;
-                if(x==540 && y==200){ //!LIBERA O S4 QND PASSA PARA O S1
+                if(x==540 && y==200){ //!LIBERA O S4
                     this->mutex.lock();
                     (**this->semaforos[4]).liberar('2');
                     this->mutex.unlock();
                 }
-                if((x+10)==550 && y==100){
+                if((x+10)==550 && y==100){ //! LIBERA O S0 qnd vai para o S1
                     this->mutex.lock();
                     (**this->semaforos[0]).liberar('2');
                     this->mutex.unlock();
@@ -224,17 +228,24 @@ void Trem::run(){
             emit updateGUI(ID,x,y); //Emite um sinal
             break;
         case 4: //Trem 4
-            if(y == 220 && x < 660){
+            if(y == 220 && ((x < 660) && (x >= 390))){
                 if(y==220 && x < 540){ //! ÁREA DE S1
-                    //x==530 && y==220 ANTES
+                    if(y==220 && x== 410){ //!LIBERA S5
+                        this->mutex.lock();
+                        (**this->semaforos[5]).liberar('4');
+                        this->mutex.unlock();
+                    }
                     if(y==220 && x==520){ //!CONFERE ENTRADA EM S4
                         this->mutex.lock();
-                        (**this->semaforos[1]).liberar('4');
                         (**this->semaforos[4]).ocupar('4');
                         this->mutex.unlock();
                     }
                 }else{//! ÁREA DE S4
-
+                    if(y==220 && x==560){//!LIBERA S1
+                        this->mutex.lock();
+                        (**this->semaforos[1]).liberar('4');
+                        this->mutex.unlock();
+                    }
                 }
                 x+=10;
             }else if(x == 660 && y <340){
@@ -245,18 +256,16 @@ void Trem::run(){
                 }
                 y+=10;
             }else if(x > 390 && y == 340){
-                if(x==370 && y==340){
+                if(x==410 && y==340){ //!Antes de S5, ocupa S5
                     this->mutex.lock();
                     (**this->semaforos[5]).ocupar('4');
                     this->mutex.unlock();
                 }
                 x-=10;
             }else{
-
-                if((x+20)==400 && (y-20)==220){
+                if(x==390 && (y-20)==220){ //!Em S5, ocupa S1
                     this->mutex.lock();
                     (**this->semaforos[1]).ocupar('4');
-                    (**this->semaforos[5]).liberar('4');
                     this->mutex.unlock();
                 }
                 y-=10;
@@ -264,14 +273,40 @@ void Trem::run(){
             emit updateGUI(ID,x,y);
             break;
         case 5: //Trem 5
-            if(y == 220 && x < 930)
+            if(y == 220 && x < 930){
+                if(x==660 && y==220){ //! LIBERA O S6 qnd passa do semaforo
+                    this->mutex.lock();
+                    (**this->semaforos[6]).liberar('5');
+                    this->mutex.unlock();
+                }
+                if(x==660 && y==220){
+                    this->mutex.lock();
+                    (**this->semaforos[3]).ocupar('5');
+                    this->mutex.unlock();
+                }
+                if(x==820){//! LIBERA EM S3
+                    this->mutex.lock();
+                    (**this->semaforos[3]).liberar('5');
+                    this->mutex.unlock();
+                }
                 x+=10;
-            else if(x == 930 && y < 340)
+            }else if(x == 930 && y < 340)
                 y+=10;
-            else if(x > 660 && y == 340)
+            else if(x > 660 && y == 340){
+                if(x==680 && y==340){ //Está dentro do trilho do S5.
+                    this->mutex.lock();
+                    (**this->semaforos[6]).ocupar('5');
+                    this->mutex.unlock();
+                }
                 x-=10;
-            else
+            }else{
+                if((x-20)==640 && y==220){ //! CONFERE ENTRADA EM S3
+                    this->mutex.lock();
+                    (**this->semaforos[3]).ocupar('2');
+                    this->mutex.unlock();
+                }
                 y-=10;
+            }
             emit updateGUI(ID,x,y);
             break;
         default:
