@@ -2,6 +2,7 @@
 #define TREM_H
 #include <QThread>
 #include <vector>
+#include <QMutex>
 #include "semaforo.h"
 
 /*
@@ -21,7 +22,7 @@ public:
     int getY();
     int getID();
     int isInTrail(int x, int y, Trem *trem);
-
+    QMutex mutex; //mutex
 //Cria um sinal
 signals:
     void updateGUI(int,int,int);

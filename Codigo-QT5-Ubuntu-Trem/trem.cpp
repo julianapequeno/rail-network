@@ -99,8 +99,10 @@ void Trem::run(){
         switch(ID){
         case 1:     //Trem 1
             if (y == 100 && x <540){
-                if(x==530 && y==100){ //assim que está para entrar ele ocupa S0
+                if(x==520 && y==100){ //assim que está para entrar ele ocupa S0
+                    this->mutex.lock();
                     (**this->semaforos[0]).ocupar('1');
+                    this->mutex.unlock();
                 }
                 x+=10;
             }else if (x == 540 && y < 220){//entrou no S0
@@ -109,19 +111,26 @@ void Trem::run(){
             }else if (x > 270 && y == 220){
                 if(x < 390){ //Saiu do S1 e entrou no S2
                     if(x==380 && y==220){
+                        this->mutex.lock();
                         (**this->semaforos[1]).liberar('1');
                         (**this->semaforos[2]).ocupar('1');
+                        this->mutex.unlock();
                     }
                 }else{ //saiu do S0 e entrou no S1
                     if(x==530 && y==220){
+                        this->mutex.lock();
                         (**this->semaforos[0]).liberar('1');
                         (**this->semaforos[1]).ocupar('1');
+                        this->mutex.unlock();
                     }
                 }
                 x-=10;
             }else{
-                if(x==270 && y==220)
+                if(x==270 && y==220){
+                    this->mutex.lock();
                     (**this->semaforos[2]).liberar('1');
+                    this->mutex.unlock();
+                }
                 y-=10;
             }
             emit updateGUI(ID, x,y);    //Emite um sinal - mudou de posição
@@ -134,23 +143,31 @@ void Trem::run(){
             }else if (x > 540 && y == 220){
                 if (x > 660){
                     if(x==800 && y==220){
+                        this->mutex.lock();
                         (**this->semaforos[3]).ocupar('2');
+                        this->mutex.unlock();
                     }
                 }else{
                     if(x==650 && y==220){
+                        this->mutex.lock();
                         (**this->semaforos[3]).liberar('2');
                         (**this->semaforos[4]).ocupar('2');
+                        this->mutex.unlock();
                     }
                 }
-                if(y==220 && x==550){
+                if(y==220 && x==560){ // trem2 espera dois blocos antes
+                    this->mutex.lock();
                     (**this->semaforos[4]).liberar('2');
                     (**this->semaforos[0]).ocupar('2');
+                    this->mutex.unlock();
                 }
                 x-=10;
             }else{
                 y-=10;
-                if((x+10)==550 && (y-10)==100){
+                if((x+10)==550 && y==100){
+                    this->mutex.lock();
                     (**this->semaforos[0]).liberar('2');
+                    this->mutex.unlock();
                 }
             }
             emit updateGUI(ID, x,y);    //Emite um sinal
