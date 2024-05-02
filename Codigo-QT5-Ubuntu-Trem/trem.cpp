@@ -99,57 +99,59 @@ void Trem::run(){
         switch(ID){
         case 1:     //Trem 1
             if (y == 100 && x <540){
-                x+=10;
-            }else if (x == 540 && y < 220){//entrou no S0
                 if(x==530 && y==100){ //assim que está para entrar ele ocupa S0
                     (**this->semaforos[0]).ocupar('1');
                 }
+                x+=10;
+            }else if (x == 540 && y < 220){//entrou no S0
+                //deprecated (**this->semaforos[0]).ocupar('1');
                 y+=10;
             }else if (x > 270 && y == 220){
                 if(x < 390){ //Saiu do S1 e entrou no S2
-                    (**this->semaforos[1]).liberar('1');
                     if(x==380 && y==220){
+                        (**this->semaforos[1]).liberar('1');
                         (**this->semaforos[2]).ocupar('1');
                     }
                 }else{ //saiu do S0 e entrou no S1
-                    (**this->semaforos[0]).liberar('1');
                     if(x==530 && y==220){
+                        (**this->semaforos[0]).liberar('1');
                         (**this->semaforos[1]).ocupar('1');
                     }
                 }
                 x-=10;
             }else{
-                (**this->semaforos[2]).liberar('1');
+                if(x==270 && y==220)
+                    (**this->semaforos[2]).liberar('1');
                 y-=10;
             }
             emit updateGUI(ID, x,y);    //Emite um sinal - mudou de posição
             break;
         case 2: //Trem 2
             if (y == 100 && x <810){
-                if(x==550 && y==100){
-                    (**this->semaforos[0]).liberar('2');
-                }
                 x+=10;
-            }else if (x == 810 && y < 220)
+            }else if (x == 810 && y < 220){
                 y+=10;
-            else if (x > 540 && y == 220){
+            }else if (x > 540 && y == 220){
                 if (x > 660){
-                    if(x==800 && y==100){
+                    if(x==800 && y==220){
                         (**this->semaforos[3]).ocupar('2');
                     }
                 }else{
-                    (**this->semaforos[3]).liberar('2');
                     if(x==650 && y==220){
+                        (**this->semaforos[3]).liberar('2');
                         (**this->semaforos[4]).ocupar('2');
                     }
                 }
-                x-=10;
-            }else{
-                (**this->semaforos[4]).liberar('2');
-                if(y==220 && x==540){
+                if(y==220 && x==550){
+                    (**this->semaforos[4]).liberar('2');
                     (**this->semaforos[0]).ocupar('2');
                 }
-                 y-=10;
+                x-=10;
+            }else{
+                y-=10;
+                if((x+10)==550 && (y-10)==100){
+                    (**this->semaforos[0]).liberar('2');
+                }
             }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
@@ -192,6 +194,9 @@ void Trem::run(){
         msleep(velocidade);
         // Quão mais alto a velocidade, mais devagar o trem anda
     }
+
+    for(auto a: this->semaforos)
+        (**a).destroySemaforo();
 }
 
 //Função que altera a velocidade

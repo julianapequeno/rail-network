@@ -8,9 +8,8 @@ public:
     Semaforo(char label);
     void destroySemaforo();
     bool verificaRegiaoCritica(int x, int y);
-    void ocupar(char trem);
-    void liberar(char trem);
-    int *buffer;
+    void ocupar(char trem); //o parâmetro é só para DEBUG
+    void liberar(char trem);//o parâmetro é só para DEBUG
 private:
     sem_t s;//o semáforo
     char label; //label do semáforo
