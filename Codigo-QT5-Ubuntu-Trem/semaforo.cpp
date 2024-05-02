@@ -3,11 +3,10 @@
 #include <iostream>
 Semaforo::Semaforo(char label) {
     this->label =  label;
-    //int buf = 1;
-    //this->buffer = &buf;
     sem_init(&this->s, 0, 1);
 }
 
+/*Deprecated*/
 bool Semaforo::verificaRegiaoCritica(int x, int y){
     int regiao = -1;
     if (x == 540 && y < 220){
@@ -40,7 +39,8 @@ void Semaforo::destroySemaforo(){
 
 void Semaforo::ocupar(char trem){
     std::cout << trem << " trem ocupando " << this->label << std::endl;
-    sem_wait(&this->s);
+    int op = sem_wait(&this->s);
+    std::cout << "chamada wait " << op << std::endl;
 }
 
 void Semaforo::liberar(char trem){
