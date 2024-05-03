@@ -310,7 +310,8 @@ void Trem::run(){
                 }
                 x-=10;
             }else{
-                if((x-20)==640 && y==220){ //! CONFERE ENTRADA EM S3
+                std::cout << "AQUI "<< x << ' ' <<y << std::endl;
+                if(x==660 && (y-10)==220){ //! CONFERE ENTRADA EM S3
                                             //! LIBERA O S6 qnd passa do semaforo
                     this->mutex.lock();
                     std::cout << "ENTREI" << std::endl;
