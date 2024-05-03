@@ -228,7 +228,6 @@ void Trem::run(){
         case 4: //Trem 4
             if(y == 220 && x < 660){
                 if(y==220 && x < 540){ //! ÁREA DE S1
-                    //CD O S1??
                     if(x==390 && y==220){ //!ocupa S1
                         this->mutex.lock();
                         (**this->semaforos[1]).ocupar('4');
@@ -316,7 +315,6 @@ void Trem::run(){
                     this->mutex.lock();
                     std::cout << "ENTREI" << std::endl;
                     (**this->semaforos[6]).liberar('5');
-                    (**this->semaforos[3]).ocupar('5');
                     this->mutex.unlock();
                 }
                 y-=10;
