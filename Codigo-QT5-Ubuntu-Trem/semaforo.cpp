@@ -3,7 +3,8 @@
 #include <iostream>
 Semaforo::Semaforo(char label) {
     this->label =  label;
-    sem_init(&this->s, 0, 1);
+    this->value = 1;
+    sem_init(&this->s, 0, this->value);
 }
 
 /*Deprecated*/
@@ -45,5 +46,12 @@ void Semaforo::ocupar(char trem){
 void Semaforo::liberar(char trem){
     std::cout << trem << " trem liberando " << this->label << std::endl;
     sem_post(&this->s);
+}
+
+bool Semaforo::isOcuppied(){
+    if(this->value <= 0)
+        return true;
+    else
+        return false;
 }
 

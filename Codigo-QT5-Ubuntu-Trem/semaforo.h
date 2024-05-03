@@ -11,9 +11,11 @@ public:
     void ocupar(char trem); //o parâmetro é só para DEBUG
     void liberar(char trem);//o parâmetro é só para DEBUG
     int ocup_resul;
+    bool isOcuppied();
 private:
     sem_t s;//o semáforo/
     char label; //label do semáforo
+    int value;
 };
 
 #endif // SEMAFORO_H
