@@ -39,7 +39,7 @@ void Semaforo::destroySemaforo(){
 
 void Semaforo::ocupar(char trem){
     std::cout << trem << " trem ocupando " << this->label << std::endl;
-    int op = sem_wait(&this->s);
+    this->ocup_resul = sem_wait(&this->s);
 }
 
 void Semaforo::liberar(char trem){

@@ -154,7 +154,7 @@ void Trem::run(){
                 y+=10;
             }else if (x > 540 && y == 220){
                 if (x > 660){ //!Em S3
-                    if(x==790 && y==220){ //!LIBERA S3
+                    if(x==680 && y==220){ //!LIBERA S3
                         this->mutex.lock();
                         (**this->semaforos[3]).liberar('2');
                         this->mutex.unlock();
@@ -287,13 +287,16 @@ void Trem::run(){
             emit updateGUI(ID,x,y);
             break;
         case 5: //Trem 5
-            if(y == 220 && (x < 930) && (x>=660)){
-                if(x==660 && y==220){
-                    this->mutex.lock();
-                    (**this->semaforos[3]).ocupar('5');
-                    this->mutex.unlock();
-                }
-                if(x==820){//! LIBERA EM S3
+            if(x==660 && y==220){ //!CASO BASE
+                this->mutex.lock();
+                (**this->semaforos[3]).ocupar('5');
+                //! PROBLEMA: O trem5 para no meio da pista
+                //! IDEIA: Caso o semaaforo esteja ocupado, ele
+                //! faz x-=10 e nao soma nada
+                this->mutex.unlock();
+                x+=10;
+            }else if(y == 220 && (x < 930) && (x>660)){
+                if(x==830){//! LIBERA EM S3
                     this->mutex.lock();
                     (**this->semaforos[3]).liberar('5');
                     this->mutex.unlock();
@@ -309,11 +312,9 @@ void Trem::run(){
                 }
                 x-=10;
             }else{
-                std::cout << "AQUI "<< x << ' ' <<y << std::endl;
                 if(x==660 && (y-10)==220){ //! CONFERE ENTRADA EM S3
                                             //! LIBERA O S6 qnd passa do semaforo
                     this->mutex.lock();
-                    std::cout << "ENTREI" << std::endl;
                     (**this->semaforos[6]).liberar('5');
                     this->mutex.unlock();
                 }
