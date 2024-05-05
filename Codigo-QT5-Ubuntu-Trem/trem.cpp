@@ -195,6 +195,11 @@ void Trem::run(){
             break;
         case 3: //Trem 3
             if (y == 220 && x < 390){
+                if(y==220 && x==250 && (**this->semaforos[1]).isOcupado() && (**this->semaforos[5]).isOcupado()){
+                    x-=10;
+                    break;
+                }
+
                 if(x==250 && y==220){ //Entra em S2
                     this->mutex.lock();
                     (**this->semaforos[2]).ocupar('3');
@@ -286,7 +291,7 @@ void Trem::run(){
                     y+=10;
                     break;
                 }
-                if((y-20)==220 && x== 390){ //!LIBERA S5
+                if((y-10)==220 && x== 390){ //!LIBERA S5
                     this->mutex.lock();
                     (**this->semaforos[5]).liberar('4');
                     this->mutex.unlock();
