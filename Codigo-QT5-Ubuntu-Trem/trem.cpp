@@ -295,11 +295,11 @@ void Trem::run(){
                 //    (**this->semaforos[1]).ocupar('4');
                 //    this->mutex.unlock();
                // }
-                if((y-20)==220 && x== 390 && (**this->semaforos[4]).isOcupado()){
+                if((y-10)==220 && x== 390 && (**this->semaforos[4]).isOcupado()){
                     y+=10;
                     break;
                 }
-                if((y-10)==220 && x== 390){ //!LIBERA S5
+                if(x==390 && (y-10)==220){ //!liberar S5
                     this->mutex.lock();
                     (**this->semaforos[5]).liberar('4');
                     this->mutex.unlock();
