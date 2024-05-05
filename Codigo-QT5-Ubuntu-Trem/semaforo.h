@@ -10,12 +10,11 @@ public:
     bool verificaRegiaoCritica(int x, int y);
     void ocupar(char trem); //o parâmetro é só para DEBUG
     void liberar(char trem);//o parâmetro é só para DEBUG
-    int ocup_resul;
-    bool isOcuppied();
+    bool OCUPADO = false;
+    bool isOcupado();
 private:
-    sem_t s;//o semáforo/
     char label; //label do semáforo
-    int value;
+    sem_t s;
 };
 
 #endif // SEMAFORO_H

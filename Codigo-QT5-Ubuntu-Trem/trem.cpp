@@ -159,7 +159,7 @@ void Trem::run(){
                         (**this->semaforos[3]).liberar('2');
                         this->mutex.unlock();
                     }
-                    if((x==680 && y==220) && !((**this->semaforos[0]).isOcuppied())){ //!CONFERE ENTRADA EM S4
+                    if((x==680 && y==220)){ //!CONFERE ENTRADA EM S4
                         this->mutex.lock();
                         (**this->semaforos[4]).ocupar('2');
                         this->mutex.unlock();
@@ -277,11 +277,16 @@ void Trem::run(){
                 //    (**this->semaforos[1]).ocupar('4');
                 //    this->mutex.unlock();
                // }
+                if((y-20)==220 && x== 390 && (**this->semaforos[4]).isOcupado()){
+                    y+=10;
+                    break;
+                }
                 if((y-20)==220 && x== 390){ //!LIBERA S5
                     this->mutex.lock();
                     (**this->semaforos[5]).liberar('4');
                     this->mutex.unlock();
                 }
+
                 y-=10;
             }
             emit updateGUI(ID,x,y);
