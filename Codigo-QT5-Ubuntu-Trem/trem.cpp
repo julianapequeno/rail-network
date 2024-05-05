@@ -154,6 +154,11 @@ void Trem::run(){
                 y+=10;
             }else if (x > 540 && y == 220){
                 if (x > 660){ //!Em S3
+                    if(y==220 && x==680 && (**this->semaforos[1]).isOcupado() && (**this->semaforos[0]).isOcupado()){
+                        std::cout << "AQUI" << std::endl;
+                        x+=10;
+                        break;
+                    }
                     if(x==680 && y==220){ //!LIBERA S3
                         this->mutex.lock();
                         (**this->semaforos[3]).liberar('2');
