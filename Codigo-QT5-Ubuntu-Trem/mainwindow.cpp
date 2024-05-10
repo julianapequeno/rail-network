@@ -100,7 +100,7 @@ void MainWindow::updateInterfaceTrainsPositions(int id, int x, int y){
 
 //Segunda opção da função que será executada quando o sinal UPDATEGUI for emitido
 //Com cores nos trilhos
-void MainWindow::updateInterface(int id, int x, int y){
+void MainWindow::updateInterfaceColors(int id, int x, int y){
     resetTrailsColors(id);
     switch(id){
     case 1: //Atualiza a posição do objeto da tela (quadrado) que representa o trem1

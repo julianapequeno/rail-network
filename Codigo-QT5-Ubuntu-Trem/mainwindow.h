@@ -21,7 +21,7 @@ public:
 
 public slots:
     void updateInterfaceTrainsPositions(int id, int x, int y);
-    void updateInterface(int,int,int);
+    void updateInterfaceColors(int,int,int);
     void resetTrailsColors(int id);
 
 private slots:

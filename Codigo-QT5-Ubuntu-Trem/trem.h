@@ -21,7 +21,6 @@ public:
     int getX();
     int getY();
     int getID();
-    int isInTrail(int x, int y, Trem *trem);
     QMutex mutex; //mutex
 //Cria um sinal
 signals:
