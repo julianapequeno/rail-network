@@ -154,6 +154,10 @@ void Trem::run(){
             if (y == 100 && x <810){
                 x+=10;
             }else if (x == 810 && y < 220){
+                if(y==200 && x==810 && ((**this->semaforos[3]).isOcupado() || (**this->semaforos[4]).isOcupado()) && (**this->semaforos[6]).isOcupado()){
+                    y-=10;
+                    break;
+                }
                 if(x==810 && y==200){ //! CONFERE ENTRADA EM S3
                     this->mutex.lock();
                     (**this->semaforos[3]).ocupar('2');
