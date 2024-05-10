@@ -25,10 +25,6 @@ public slots:
     void resetTrailsColors(int id);
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
     void on_horizontalSlider_valueChanged(int value);
 
     void on_horizontalSlider_7_valueChanged(int value);

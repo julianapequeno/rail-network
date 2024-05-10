@@ -203,7 +203,6 @@ void Trem::run(){
             }else if(x > 390 && y == 340){ //LIVREs
                 if(y==340 && x==410 && (**this->semaforos[1]).isOcupado() && (**this->semaforos[2]).isOcupado()){
                     x+=10;
-                    std::cout << "PAREI" << std::endl;
                     break;
                 }
                 if(y== 340 &&  x== 640){ //!LIBERA S6

@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -187,30 +186,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-/*
- * Ao clicar, trens começam execução
- */
-void MainWindow::on_pushButton_clicked()
-{
-    trem1->start();
-    trem2->start();
-    trem3->start();
-    trem4->start();
-    trem5->start();
-}
-
-/*
- * Ao clicar, trens param execução
- */
-void MainWindow::on_pushButton_2_clicked()
-{
-    trem1->terminate(); //finaliza a thread que está sendo executada
-    trem2->terminate();
-    trem3->terminate();
-    trem4->terminate();
-    trem5->terminate();
-}
-
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
     if(value == 200){
@@ -219,6 +194,7 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
     }
     if(!trem1->isRunning())
         trem1->start();
+
 
     trem1->setVelocidade(value);
 }
