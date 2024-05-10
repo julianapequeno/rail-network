@@ -345,7 +345,8 @@ void Trem::run(){
             }else if(x == 930 && y < 340)
                 y+=10;
             else if(x > 660 && y == 340){
-                if(y==340 && x==680 && (**this->semaforos[3]).isOcupado()){
+                if(y==340 && x==680 && ((**this->semaforos[6]).isOcupado() || (**this->semaforos[4]).isOcupado()) && (**this->semaforos[3
+                ]).isOcupado()){
                     x+=10;
                     break;
                 }
