@@ -251,6 +251,10 @@ void Trem::run(){
                         (**this->semaforos[1]).ocupar('4');
                         this->mutex.unlock();
                     }
+                    if(y==220 && x==520 && ((**this->semaforos[4]).isOcupado() || (**this->semaforos[3]).isOcupado()) && (**this->semaforos[6]).isOcupado()){
+                        x-=10;
+                        break;
+                    }
                     if(y==220 && x==520){ //!CONFERE ENTRADA EM S4
                         this->mutex.lock();
                         (**this->semaforos[4]).ocupar('4');
